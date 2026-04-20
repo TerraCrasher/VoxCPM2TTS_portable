@@ -6,6 +6,7 @@ import time
 import threading
 from pathlib import Path
 from datetime import datetime
+from app.config import VERSION
 
 import gradio as gr
 import soundfile as sf
@@ -467,7 +468,23 @@ def create_ui():
 
     with gr.Blocks(title="VoxCPM2 Voice Cloner", theme=gr.themes.Soft()) as app:
 
-        gr.Markdown("# 🎙️ VoxCPM2 Voice Cloner")
+        # 업데이트 체크
+        update_msg = ""
+        try:
+            from app.updater import check_update
+            update_info = check_update()
+            if update_info["available"]:
+                update_msg = (
+                    f"\n> 🔔 **새 버전 v{update_info['latest']}** 이 있습니다! "
+                    f"[다운로드]({update_info['url']}/releases/latest) | "
+                    f"`update.bat` 실행으로 업데이트"
+                )
+        except Exception:
+            pass
+
+        gr.Markdown(f"# 🎙️ VoxCPM2 Voice Cloner v{VERSION}")
+        if update_msg:
+            gr.Markdown(update_msg)
 
         with gr.Tabs():
             # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

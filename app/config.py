@@ -2,6 +2,11 @@
 
 from pathlib import Path
 
+# ── 버전 ──
+VERSION = "1.0.0"
+GITHUB_REPO = "TerraCrasher/VoxCPM2TTS_portable"
+GITHUB_URL = f"https://github.com/{GITHUB_REPO}"
+
 # ── 경로 설정 ──
 BASE_DIR = Path(__file__).resolve().parent.parent
 INPUT_DIR = BASE_DIR / "inputs" / "reference_audio"
@@ -25,7 +30,7 @@ DEFAULT_INFERENCE_TIMESTEPS = 15
 # ── 출력 설정 ──
 OUTPUT_FORMAT = "wav"
 
-# ── 스타일 프리셋 (공식 요소: gender, age, tone, emotion, pace) ──
+# ── 스타일 프리셋 ──
 STYLE_PRESETS = {
     "0": {"name": "직접 입력", "prompt": ""},
     "1": {"name": "빠르게", "prompt": "slightly faster"},

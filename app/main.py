@@ -17,6 +17,16 @@ def main():
     print("  🎙️ VoxCPM2 음성 클로닝 프로그램")
     print("=" * 50)
 
+    # 업데이트 체크
+    try:
+        from app.updater import check_update
+        update_info = check_update()
+        print(f"\n  버전: v{update_info['current']}")
+        if update_info["available"]:
+            print(f"  {update_info['message']}")
+    except Exception:
+        pass
+
     cloner.load_model()
 
     while True:
