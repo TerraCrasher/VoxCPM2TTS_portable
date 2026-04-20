@@ -1,0 +1,5 @@
+voxcpm>=2.0.0
+openai-whisper
+gradio>=6.0,<7.0
+soundfile
+pyyaml
